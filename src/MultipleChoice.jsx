@@ -3,8 +3,9 @@ import CustomPieChart from "./CustomPieChart";
 import "./App.css";
 import Interact from "./Interact";
 import { Link } from "react-router";
+import AddChoice from "./AddChoice";
 
-function App() {
+export default function MultipleChoice() {
   const [animation, setAnimation] = useState("none");
   const [rotation, setRotation] = useState(0);
   const [alreadyPressed, setAlreadyPressed] = useState(false);
@@ -12,43 +13,47 @@ function App() {
   const [winner,setWinner]=useState("")
   const [screenSize,setScreenSize]=useState(window.innerWidth)
   const [variants,setVariant]=useState([
-            { id: 0, value: 50, label: 'Da',color:"#09C84C" },
-            { id: 1, value: 50, label: 'Nu',color:"#F52C2C" },
+            { id: 0, value: 50, label: 'Exemplu'},
+            { id: 1, value: 50, label: 'Exemplu'},
           ])
+  const [totalChance,setTotalChance]=useState(0)
+
+
+   function addObj(valoare,sansa){
+        const variantsCopy=[...variants]
+        if (variantsCopy[0].label=="Exemplu"){
+            variantsCopy.pop()
+            variantsCopy.pop()
+        }
+        variantsCopy.push({id:variantsCopy.length,label:valoare+" ("+sansa+ "%)",value:sansa})
+        setVariant(variantsCopy)
+        let totalChanceCopy=0
+        for(let i=0;i<variantsCopy.length;i++){
+            totalChanceCopy+=Number(variantsCopy[i].value)
+        }
+        setTotalChance(totalChanceCopy)
+    }
+
+    function randomChoice(){
+
+    }
+
+
   useEffect(() => {
     console.log(screenSize)
     const handleResize=()=>setScreenSize(window.innerWidth)
     window.addEventListener("resize", handleResize);
   }, [alreadyPressed,winner,screenSize]);
 
+  useEffect(()=>{console.log(totalChance)},[totalChance])
+
   function play() {
-    setTrigger(true)
-    const chance = Math.floor((Math.random() * 10)+1);
-    console.log(chance)
-    if (chance >= 5) {
-      const rotationVar = 180 + Math.floor(Math.random() * 180);
-      setRotation(rotationVar + 1440);
-      setTimeout(()=>{setWinner("Nu")},4000)
-    } else {
-      const rotationVar = Math.floor(Math.random() * 180);
-      setRotation(rotationVar + 1440);
-      setTimeout(()=>{setWinner("Da")},4000)
-    }
-    if (alreadyPressed) {
-      setAnimation("none");
-      setTimeout(() => {
-        setAnimation("spin 4s ease-out");
-      }, 10);
-    } else {
-        setAnimation("spin 4s ease-out");
-    }
-    setAlreadyPressed(true);
-    setTimeout(()=>{setTrigger(false)},4000)
+    
   }
 
   return (
     <>
-      <Interact play={play} winner={winner} trigger={trigger}></Interact>
+      <AddChoice addObj={addObj} totalChance={totalChance}></AddChoice>
       <CustomPieChart
         animation={animation}
         rotation={rotation}
@@ -59,9 +64,8 @@ function App() {
         innerRadius={screenSize>1000?100:75}
         data={variants}
       ></CustomPieChart>
-      <Link to={"/Decision-Maker-React/multiple-choice"}>MultipleChoice</Link>
+      <p><b>Sansa Totala:</b>{totalChance+" din 100%"}</p>
+      <Link to={"/Decision-Maker-React"}>Go back</Link>
     </>
   );
 }
-
-export default App;
