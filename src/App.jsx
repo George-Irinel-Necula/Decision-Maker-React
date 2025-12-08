@@ -9,11 +9,13 @@ function App() {
   const [alreadyPressed, setAlreadyPressed] = useState(false);
   const [trigger,setTrigger]=useState(false)
   const [winner,setWinner]=useState("")
+  const [screenSize,setScreenSize]=useState(window.innerWidth)
 
   useEffect(() => {
-    console.log(alreadyPressed);
-    console.log(winner)
-  }, [alreadyPressed,winner]);
+    console.log(screenSize)
+    const handleResize=()=>setScreenSize(window.innerWidth)
+    window.addEventListener("resize", handleResize);
+  }, [alreadyPressed,winner,screenSize]);
 
   function play() {
     setTrigger(true)
@@ -48,6 +50,9 @@ function App() {
         rotation={rotation}
         still={rotation}
         alreadyPressed={alreadyPressed}
+        width={screenSize>1000?400:300}
+        height={screenSize>1000?400:300}
+        innerRadius={screenSize>1000?100:75}
       ></CustomPieChart>
       
     </>
