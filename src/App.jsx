@@ -10,7 +10,10 @@ function App() {
   const [trigger,setTrigger]=useState(false)
   const [winner,setWinner]=useState("")
   const [screenSize,setScreenSize]=useState(window.innerWidth)
-
+  const [variants,setVariant]=useState([
+            { id: 0, value: 50, label: 'Nu',color:"#09C84C" },
+            { id: 1, value: 50, label: 'Da',color:"#F52C2C" },
+          ])
   useEffect(() => {
     console.log(screenSize)
     const handleResize=()=>setScreenSize(window.innerWidth)
@@ -21,7 +24,7 @@ function App() {
     setTrigger(true)
     const chance = Math.floor((Math.random() * 10)+1);
     console.log(chance)
-    if (chance >= 3) {
+    if (chance >= 5) {
       const rotationVar = 180 + Math.floor(Math.random() * 180);
       setRotation(rotationVar + 1440);
       setTimeout(()=>{setWinner("Nu")},4000)
@@ -53,6 +56,7 @@ function App() {
         width={screenSize>1000?400:300}
         height={screenSize>1000?400:300}
         innerRadius={screenSize>1000?100:75}
+        data={variants}
       ></CustomPieChart>
       
     </>

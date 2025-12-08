@@ -3,7 +3,7 @@ import './App.css'
 import { border } from '@mui/system'
 import { useEffect } from 'react'
 
-export default function CustomPieChart({rotation,animation,still,alreadyPressed,width,height,innerRadius}) {
+export default function CustomPieChart({rotation,animation,still,alreadyPressed,width,height,innerRadius,data}) {
 
   return (
     <>
@@ -20,11 +20,7 @@ export default function CustomPieChart({rotation,animation,still,alreadyPressed,
       
       series={[
         {
-          data: [
-            { id: 0, value: 50, label: 'Nu',color:"#09C84C" },
-            { id: 1, value: 50, label: 'Da',color:"#F52C2C" },
-            
-          ],
+          data: data,
           arcLabel: 'label',
           innerRadius:innerRadius,
         },
