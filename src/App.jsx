@@ -8,7 +8,6 @@ export default function App() {
   const [rotation, setRotation] = useState(0);
   const [alreadyPressed, setAlreadyPressed] = useState(false);
 
-  // renamed trigger → inProgress
   const [inProgress, setInProgress] = useState(false);
 
   const [winner, setWinner] = useState("");
@@ -20,6 +19,7 @@ export default function App() {
   ]);
 
   const [currentTotalChance, setCurrentTotalChance] = useState(0);
+  const [defaultChoice,setDefaultChoices]=useState(true)
 
   function reset() {
     const choicesCopy = [
@@ -41,11 +41,14 @@ export default function App() {
 
     setChoices(choicesCopy);
     setCurrentTotalChance(0);
+    setRotation(0)
+    setDefaultChoices(true)
+    setInProgress(false)
   }
 
   function addObj(valoare, sansa) {
     const choicesCopy = [...choices];
-
+    setDefaultChoices(false)
     if (choicesCopy[0].label === "Da" && choicesCopy[1].label === "Nu") {
       choicesCopy.pop();
       choicesCopy.pop();
@@ -123,15 +126,18 @@ export default function App() {
     setTimeout(() => setInProgress(false), 4000);
   }
 
+  useEffect(()=>{console.log(defaultChoice)},[defaultChoice])
+
   return (
     <>
       <AddChoice
         addObj={addObj}
         reset={reset}
         gamble={play}
-        totalChance={currentTotalChance}
+        currentTotalChance={currentTotalChance}
         winner={winner}
-        triggered={inProgress}
+        inProgress={inProgress}
+        defaultChoice={defaultChoice}
       ></AddChoice>
 
       <CustomPieChart
@@ -146,7 +152,7 @@ export default function App() {
       ></CustomPieChart>
 
       <p>
-        <b>Sansa Totala:</b> {currentTotalChance + " din 100%"}
+        <b>Sansa Totala:</b> {defaultChoice?"100%":(currentTotalChance + " din 100%")}
       </p>
     </>
   );

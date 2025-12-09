@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function AddChoice({ addObj, currentTotalChance, gamble, reset, winner, inProgress }) {
+export default function AddChoice({ addObj, currentTotalChance, gamble, reset, winner, inProgress,defaultChoice }) {
     const [name, setName] = useState("");
     const [chance, setChance] = useState(null);
 
@@ -51,7 +51,7 @@ export default function AddChoice({ addObj, currentTotalChance, gamble, reset, w
                 Reset
             </button>
 
-            <button onClick={gamble} disabled={inProgress}>
+            <button onClick={gamble} disabled={inProgress||currentTotalChance<100?true:false}>
                 Gamble
             </button>
         </div>
