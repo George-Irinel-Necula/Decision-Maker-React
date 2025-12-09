@@ -1,5 +1,5 @@
 
-# Choice Maker React
+# Decision Maker React
 
 Invarte roata ca sa vezi care raspuns este castigator
 
