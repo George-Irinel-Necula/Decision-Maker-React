@@ -3,7 +3,8 @@
 
 Invarte roata ca sa vezi care raspuns este castigator
 
-Acceseaza aici:https://george-irinel-necula.github.io/Decision-Maker-React/
+Acceseaza aici:
+https://george-irinel-necula.github.io/Decision-Maker-React/
 
 ## Adauga propriile tale variante
 
