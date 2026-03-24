@@ -3,7 +3,7 @@
 
 Spin the wheel to see which answer is the winner
 
-Acces Here:  
+Access Here:  
 https://george-irinel-necula.github.io/Decision-Maker-React/
 
 ## Add your own options
