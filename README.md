@@ -18,5 +18,5 @@ Fie ca vrei sa alegi doar dintre Da/Nu sau vrei sa ai mai multe variante de aleg
 
 ## Screenshots
 
-![App Screenshot](https://media.discordapp.net/attachments/826793861275451392/1447921647842492549/image.png?ex=6939619d&is=6938101d&hm=2061398e00cfbf96ba139c1059556c6ab29c05ff16ef222959f550e037264915&=&format=webp&quality=lossless)
+![App Screenshot](https://i.imgur.com/NB85fo7.png)
 
