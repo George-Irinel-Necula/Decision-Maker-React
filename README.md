@@ -1,19 +1,18 @@
 
 # Decision Maker React
 
-Invarte roata ca sa vezi care raspuns este castigator
+Spin the wheel to see which answer is the winner
 
-Acceseaza aici:  
+Acces Here:  
 https://george-irinel-necula.github.io/Decision-Maker-React/
 
-## Adauga propriile tale variante
+## Add your own options
 
-Fie ca vrei sa alegi doar dintre Da/Nu sau vrei sa ai mai multe variante de alegere , poti face acest lucru cu acest App in React
-## Tech Stack
+Whether you want to choose just between Yes/No or have multiple options to choose from, you can do this with this React App
 
-**Tehnologii folosite:** React, Vite , MUI - Pie Chart 
+## Technologies used: 
 
-
+React, Vite, MUI - Pie Chart
 
 
 ## Screenshots
